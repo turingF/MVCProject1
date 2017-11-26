@@ -1,6 +1,8 @@
 package edu.nuaa.servlet.xuyang;
 
-import Daofactory.DaoFactory;
+
+
+import edu.nuaa.factory.DaoFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
