@@ -52,7 +52,8 @@ public class ExcelDaoImpl implements IExcelDao{
         //获取excel文件中的表单
         Sheet sheet1 = null;
         try {
-            sheet1 = wb.getSheetAt(0);//获取excel中的表单
+            sheet1 = wb.
+                    getSheetAt(0);//获取excel中的表单
             excel.setNumrows(sheet1.getLastRowNum());//获取表单中的行数
             excel.setNumcolomns(sheet1.getRow(0).getLastCellNum());//获取表单中的列数
         } catch (Exception e)

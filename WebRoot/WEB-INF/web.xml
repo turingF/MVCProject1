@@ -5,8 +5,12 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>edu.nuaa.servlet.LoginServlet</servlet-class>
   </servlet>
+    <servlet>
+        <servlet-name>testServlet</servlet-name>
+        <servlet-class>edu.nuaa.servlet.xuyang.testServlet</servlet-class>
+    </servlet>
 
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
