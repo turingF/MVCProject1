@@ -2,12 +2,20 @@
   <artifact type="exploded-war" name="MVCProject1:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/MVCProject1_war_exploded</output-path>
     <root id="root">
+
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="MVCProject1" />
         </element>
-      </element>
-      <element id="javaee-facet-resources" facet="MVCProject1/web/Web" />
+        <element id="directory" name="lib">
+          <element id="file-copy" path="D:/软件可靠性大作业/poi-3.17/lib/commons-collections4-4.1.jar" />
+          <element id="file-copy" path="D:/软件可靠性大作业/poi-3.17/ooxml-lib/xmlbeans-2.6.0.jar" />
+          <element id="file-copy" path="D:/软件可靠性大作业/poi-3.17/poi-3.17.jar" />
+          <element id="file-copy" path="D:/软件可靠性大作业/poi-3.17/poi-ooxml-3.17.jar" />
+          <element id="file-copy" path="D:/软件可靠性大作业/poi-3.17/poi-ooxml-schemas-3.17.jar" />
+          <element id="file-copy" path="D:/资料/上传/jspsmartupload-javaword的.jar" />
+        </element>
+
     </root>
   </artifact>
 </component>
