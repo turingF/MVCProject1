@@ -41,7 +41,14 @@
       <library>
         <CLASSES>
 
-          <root url="jar://D:/../../大数据/项目需要外部jar/poi-bin-3.17-20170915/poi-3.17/lib/commons-collections4-4.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
 
         </CLASSES>
         <JAVADOC />
@@ -52,8 +59,6 @@
       <library>
         <CLASSES>
 
-          <root url="jar://D:/../../大数据/项目需要外部jar/poi-bin-3.17-20170915/poi-3.17/poi-3.17.jar!/" />
-
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -63,8 +68,6 @@
       <library>
         <CLASSES>
 
-          <root url="jar://D:/../../大数据/项目需要外部jar/poi-bin-3.17-20170915/poi-3.17/poi-ooxml-3.17.jar!/" />
-
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -73,18 +76,8 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-
-          <root url="jar://D:/../../大数据/项目需要外部jar/poi-bin-3.17-20170915/poi-3.17/poi-ooxml-schemas-3.17.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
+          <root url="jar://D:/资料/上传/jspsmartupload-javaword的.jar!/" />
           <root url="jar://D:/../../大数据/项目需要外部jar/mysql/mysql-connector-java-5.1.18-bin.jar!/" />
-
         </CLASSES>
         <JAVADOC />
         <SOURCES />
