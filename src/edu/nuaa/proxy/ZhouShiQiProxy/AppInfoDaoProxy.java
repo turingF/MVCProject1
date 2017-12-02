@@ -15,7 +15,7 @@ public class AppInfoDaoProxy implements IAppInfoDao{
 	
 	public AppInfoDaoProxy() throws Exception{
 		this.dbc = new DataBaseConnection();
-		this.dao = new AppInfoDaoImpl(this.dbc.getConnnection());
+		this.dao = new AppInfoDaoImpl(this.dbc.getConnection());
 	}
 
 	@Override

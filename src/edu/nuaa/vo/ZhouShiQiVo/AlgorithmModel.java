@@ -1,4 +1,4 @@
-package ZhouShiQiVo;
+package edu.nuaa.vo.ZhouShiQiVo;
 
 public class AlgorithmModel {
 	private int id;   //算法模型id

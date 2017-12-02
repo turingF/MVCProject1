@@ -4,6 +4,8 @@ package edu.nuaa.dao.ZhouShiQiDao;
 
 import edu.nuaa.vo.ZhouShiQiVo.AppInfo;
 
+import java.util.List;
+
 public interface IAppInfoDao {
 
 	/**
