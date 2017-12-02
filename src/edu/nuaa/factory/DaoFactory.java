@@ -1,12 +1,19 @@
 package edu.nuaa.factory;
 
-import edu.nuaa.dao.IUserDao;
-import edu.nuaa.dao.proxy.UserDaoProxy;
+
+import edu.nuaa.dao.XuYangDao.IAnReDao;
+import edu.nuaa.dao.XuYangDao.IUserDao;
+import edu.nuaa.proxy.XuYangProxy.IAnReDaoProxy;
+import edu.nuaa.proxy.XuYangProxy.IUserDaoProxy;
 
 public class DaoFactory {
-	
-	public static IUserDao getIUserDaoInstance(){
-		return new UserDaoProxy();
+
+	public static IUserDao getUserDaoInstance()throws Exception{
+		return new IUserDaoProxy();
 	}
 
+
+	public static IAnReDao getAnReDaoInstance() throws Exception{
+		return new IAnReDaoProxy();
+	}
 }
