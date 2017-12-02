@@ -15,7 +15,7 @@ public class AlgorithmModelDaoProxy implements IAlgorithmModelDao{
 	
 	public AlgorithmModelDaoProxy()throws Exception{
 		this.dbc = new DataBaseConnection();
-		this.dao = new AlgorithmModelDaoImpl(this.dbc.getConnnection());
+		this.dao = new AlgorithmModelDaoImpl(this.dbc.getConnection());
 	}
 
 	@Override

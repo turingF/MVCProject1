@@ -1,4 +1,4 @@
-package ZhouShiQiVo;
+package edu.nuaa.vo.ZhouShiQiVo;
 
 public class AppInfo {
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.nuaa.dao.ZhouShiQiDao.IAppInfoDao;
+
 import edu.nuaa.dao.impl.ZhouShiQiDaoImpl.AppInfoDaoImpl;
 import edu.nuaa.dbc.DataBaseConnection;
 import edu.nuaa.vo.ZhouShiQiVo.AppInfo;
@@ -15,7 +16,7 @@ public class AppInfoDaoProxy implements IAppInfoDao{
 	
 	public AppInfoDaoProxy() throws Exception{
 		this.dbc = new DataBaseConnection();
-		this.dao = new AppInfoDaoImpl(this.dbc.getConnnection());
+		this.dao = new AppInfoDaoImpl(this.dbc.getConnection());
 	}
 
 	@Override
