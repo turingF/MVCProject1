@@ -32,7 +32,7 @@ public class SaveExcelServlet extends HttpServlet {
         //Written by Zhou
         //存储应用信息
 
-        //Written by Zong
+        //Written by Zong 2017 12 3
         //存储数据集文件
         try {
             DaoFactory.getExcelDaoInstance().saveExcelToMysql(appname+"原始数据集",excelpath);
