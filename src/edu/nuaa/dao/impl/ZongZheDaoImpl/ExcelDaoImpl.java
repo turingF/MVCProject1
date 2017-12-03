@@ -324,10 +324,10 @@ public class ExcelDaoImpl implements IExcelDao{
 
     //外部接口
     @Override
-    public String saveExcelToMysql(String excelname,String excelpath, Excel excel) throws Exception {
+    public String saveExcelToMysql(String excelname,String excelpath) throws Exception {
         String result=null;
         result="创建成功！";
-
+        Excel excel=new Excel();
         //初始化excel对象
         try{
             excel=initExcel(excelname,excelpath,excel);//初始化excel对象

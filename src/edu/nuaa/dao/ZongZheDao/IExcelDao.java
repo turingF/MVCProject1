@@ -13,7 +13,7 @@ public interface IExcelDao {
      * @return 结果信息
      * @throws Exception 异常
      */
-    public String saveExcelToMysql(String excelname, String excelpath, Excel excel)throws Exception;
+    public String saveExcelToMysql(String excelname, String excelpath)throws Exception;
 
     /**
      * 将excel数据模型属性存入数据库
