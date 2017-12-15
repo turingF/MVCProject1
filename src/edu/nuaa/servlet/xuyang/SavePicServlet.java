@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 public class SavePicServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         Boolean savepRS = false ;
 
         PrintWriter out = response.getWriter();

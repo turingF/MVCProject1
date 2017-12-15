@@ -39,6 +39,8 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+
 		Boolean LoginRS = false ;
 		
 		PrintWriter out = response.getWriter();
@@ -55,8 +57,6 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("sessionId",account);
 
 				RequestDispatcher ds;
-
-				response.setContentType("text/html;charset=UTF-8");
 				request.getRequestDispatcher("user.jsp").forward(request,response);
 
 			}
@@ -66,7 +66,6 @@ public class LoginServlet extends HttpServlet {
 
 				RequestDispatcher ds;
 				ds=request.getRequestDispatcher("index.jsp");
-				response.setContentType("text/html;charset=UTF-8");
 				ds.forward(request,response);
 
 			}

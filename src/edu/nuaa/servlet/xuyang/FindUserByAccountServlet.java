@@ -35,6 +35,7 @@ public class FindUserByAccountServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
+		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		response.setCharacterEncoding("utf-8");
