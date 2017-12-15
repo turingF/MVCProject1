@@ -3,7 +3,9 @@ package edu.nuaa.servlet.xuyang;
 
 
 import edu.nuaa.factory.DaoFactory;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +46,7 @@ public class LoginServlet extends HttpServlet {
 		String account = request.getParameter("account");
 		String password = request.getParameter("password");
 
+
 		HttpSession session = request.getSession();
 		
 		try {
@@ -51,9 +54,21 @@ public class LoginServlet extends HttpServlet {
 				LoginRS = true;  //登录成功
 				session.setAttribute("sessionId",account);
 
+				RequestDispatcher ds;
+
+				response.setContentType("text/html;charset=UTF-8");
+				request.getRequestDispatcher("user.jsp").forward(request,response);
+
 			}
 			else {
 			LoginRS = false; //登录失败
+
+
+				RequestDispatcher ds;
+				ds=request.getRequestDispatcher("index.jsp");
+				response.setContentType("text/html;charset=UTF-8");
+				ds.forward(request,response);
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

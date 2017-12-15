@@ -11,7 +11,7 @@ public class DataBaseConnection {
 	// 用户名
 	public static final String DBUSER = "root";
 	// 密码
-	public static final String DBPASS = "1234";
+	public static final String DBPASS = "admin";
 
 	private Connection conn = null;
 

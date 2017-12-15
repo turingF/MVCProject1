@@ -3,6 +3,7 @@ package edu.nuaa.servlet.xuyang;
 
 import edu.nuaa.factory.DaoFactory;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -49,6 +50,10 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			if (DaoFactory.getUserDaoInstance().register(account, password)==true) {
 				RegisRS = true; // 注册成功
+
+
+				RequestDispatcher ds;
+				request.getRequestDispatcher("index.jsp").forward(request,response);
 			} else {
 				RegisRS = false; //注册失败
 			}

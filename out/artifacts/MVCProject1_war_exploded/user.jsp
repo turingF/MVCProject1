@@ -58,8 +58,23 @@
 
         <ul class="nav navbar-nav navbar-right">
 
-            <li><a href="javascript:void(0)" onclick="openRegisterModal();"><span class="glyphicon glyphicon-log-in"></span> 注销</a></li>
+            <li><a href="javascript:login_out()" onclick="openRegisterModal();"><span class="glyphicon glyphicon-log-in"></span> 注销</a></li>
         </ul>
+
+        <!-- 取消登錄 -->
+        <script type="text/javascript">
+
+            function login_out()
+            {
+                var r=confirm("确认要取消登录吗");
+                if (r==true)
+                {
+                    window.location.href="index.jsp";
+                }
+
+            }
+        </script>
+
     </div>
 </nav>
 <div style="padding-top: 0px;padding-left: 80px">
