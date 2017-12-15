@@ -45,7 +45,7 @@ public class Sql {
         int num=headers.size();
         String result=null;
         String sql="insert into "+tablename+"(";
-        for(int i=1;i<num;i++)
+        for(int i=0;i<num;i++)
         {
             if(i==num-1) {
                 sql+=headers.get(i);
@@ -54,8 +54,9 @@ public class Sql {
                 sql+=headers.get(i)+",";
             }
         }
+        sql+=")";
         sql+=" values(";
-        for(int i=1;i<num;i++)
+        for(int i=0;i<num;i++)
         {
             if(i==num-1){
                 sql+="'"+values.get(i)+"'";

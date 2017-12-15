@@ -67,29 +67,34 @@ public class ExcelDaoImpl implements IExcelDao{
         try{
         for(int i=0;i<excel.getNumcolomns();i++)
         {
+            //这里有问题，不可以字符串形式读取出表格中的数字类型
             headers.add(sheet1.getRow(0).getCell(i).getStringCellValue());//获取表头内容
         }
         }catch(Exception e)
         {
             e.printStackTrace();;
         }
+        excel.setHeaders(headers);
 
         //获取excel表中数据
         ArrayList<String> temp=null;
         ArrayList<ArrayList<String>> datas=new ArrayList<ArrayList<String>>();
-        try {
-            for (int i = 0; i < excel.getNumrows(); i++) {
+
+            for (int i = 1; i < excel.getNumrows(); i++) {
                 temp = new ArrayList<String>();
                 for (int j = 0; j < excel.getNumcolomns(); j++) {
-                    temp.add(sheet1.getRow(i).getCell(j).getStringCellValue());//获取第i,j个数据内容
+                    try{
+                        temp.add(sheet1.getRow(i).getCell(j).getStringCellValue());//获取第i,j个数据内容
+                    }catch(Exception e){
+                        double value=sheet1.getRow(i).getCell(j).getNumericCellValue();
+                        temp.add(String.valueOf(value));//获取第i,j个数据内容
+                    }
+
                 }
                 datas.add(temp);
             }
             excel.setDatas(datas);
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+            excel.setNumrows(excel.getNumrows()-1);//获取表单中的行数
             return excel;
     }
 
@@ -103,10 +108,14 @@ public class ExcelDaoImpl implements IExcelDao{
         String result=null;//用来返回异常结果
         for(int i=0;i<excel.getNumrows();i++){
             String sql =Sql.makeInsertSql(excel.getDbname(),excel.getHeaders(),excel.getDatas().get(i));
-            this.ps = this.conn.prepareStatement(sql);
-            for(int j=1;j<excel.getNumcolomns();j++){
-                this.ps.setString(j,excel.getDatas().get(i).get(j));
-            }
+             this.ps = this.conn.prepareStatement(sql);
+//            for(int j=0;j<excel.getNumcolomns();j++){
+//                this.ps.setString(j+1,excel.getDatas().get(i).get(j));
+//            }
+ //           this.ps.setString(0,"123");
+//            this.ps.setString(1,"123");
+//            this.ps.setString(2,"123");
+//            this.ps.setString(3,"123");
             if (this.ps.executeUpdate() <=0) {
                 result="保存数据失败";
             }
@@ -138,9 +147,9 @@ public class ExcelDaoImpl implements IExcelDao{
         //使用sql语句
         try {
             this.ps = this.conn.prepareStatement(sql);
-            for(int j=1;j<headers.size();j++){
-                this.ps.setString(j,property.get(j));
-            }
+//            for(int j=1;j<headers.size();j++){
+//                this.ps.setString(j,property.get(j));
+//            }
             if (this.ps.executeUpdate() <=0) {
                 result= "保存属性失败";
             }
@@ -162,7 +171,7 @@ public class ExcelDaoImpl implements IExcelDao{
      */
     private String createPropertyTable(String dbname,ArrayList<String> property) throws Exception {
        String result=null;
-        String sql=Sql.makeCopySql(dbname,"property"+dbname);
+        String sql=Sql.makeCopySql(dbname,dbname);
         ps=conn.prepareStatement(sql);
         try {
             ps.executeUpdate(sql);
@@ -206,6 +215,10 @@ public class ExcelDaoImpl implements IExcelDao{
         }catch(Exception e)
         {
             e.printStackTrace();
+            if(e.toString().contains("already exists"))
+            {
+                result="该数据表已经存在";
+            }
             result="create语句执行失败";
             ps.close();
             return result;
