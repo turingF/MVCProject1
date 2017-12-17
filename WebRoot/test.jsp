@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1>中文测试</h1>
+<img src="img/pictest.bmp"/>
 </body>
 </html>
