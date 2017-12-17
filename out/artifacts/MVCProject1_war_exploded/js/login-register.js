@@ -84,7 +84,7 @@ function registerAjax(){
         {
             shakeModal();
             return false;
-        }
+        }0
        // document.getElementById("register").submit();
 
 /*   Simulate error message from the server   */

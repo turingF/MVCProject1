@@ -31,4 +31,9 @@ public class ExcelDaoProxy implements IExcelDao {
     public Excel getExcelDataFromMysql(String dbname) throws Exception {
         return this.dao.getExcelDataFromMysql(dbname);
     }
+
+    @Override
+    public String savePreData(String dbname, ArrayList<String> predatas, String header) throws Exception {
+        return this.dao.savePreData(dbname,predatas,header);
+    }
 }

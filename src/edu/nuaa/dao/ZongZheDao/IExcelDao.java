@@ -25,4 +25,6 @@ public interface IExcelDao {
      */
     public String savePropertyToMysql(String dbname, ArrayList<String> header, ArrayList<String> property)throws Exception;
     public Excel getExcelDataFromMysql(String dbname)throws Exception;
+    //将预测好的数据存入数据库中
+    public String savePreData(String dbname,ArrayList<String> predatas,String header)throws Exception;
 }

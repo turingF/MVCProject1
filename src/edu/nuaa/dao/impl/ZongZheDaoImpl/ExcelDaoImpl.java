@@ -53,8 +53,7 @@ public class ExcelDaoImpl implements IExcelDao{
         //获取excel文件中的表单
         Sheet sheet1 = null;
         try {
-            sheet1 = wb.
-                    getSheetAt(0);//获取excel中的表单
+            sheet1 = wb.getSheetAt(0);//获取excel中的表单
             excel.setNumrows(sheet1.getLastRowNum());//获取表单中的行数
             excel.setNumcolomns(sheet1.getRow(0).getLastCellNum());//获取表单中的列数
         } catch (Exception e)
@@ -84,8 +83,17 @@ public class ExcelDaoImpl implements IExcelDao{
                 temp = new ArrayList<String>();
                 for (int j = 0; j < excel.getNumcolomns(); j++) {
                     try{
-                        temp.add(sheet1.getRow(i).getCell(j).getStringCellValue());//获取第i,j个数据内容
+                        if(sheet1.getRow(i).getCell(j).getStringCellValue()==null){
+                            temp.add("########");
+                        }
+                        else{
+                            temp.add(sheet1.getRow(i).getCell(j).getStringCellValue());//获取第i,j个数据内容
+                        }
                     }catch(Exception e){
+//                        if(sheet1.getRow(i).getCell(j).getNumericCellValue()==null)
+//                        {
+//                            temp.add("########");
+//                        }
                         double value=sheet1.getRow(i).getCell(j).getNumericCellValue();
                         temp.add(String.valueOf(value));//获取第i,j个数据内容
                     }
@@ -178,6 +186,11 @@ public class ExcelDaoImpl implements IExcelDao{
         }catch(Exception e)
         {
             result="属性表创建失败";//-7创建属性表失败
+            if(e.toString().contains("already exists"))
+            {
+                result="Table already exists";
+                return result;
+            }
             e.printStackTrace();
             ps.close();
             return result;
@@ -217,7 +230,8 @@ public class ExcelDaoImpl implements IExcelDao{
             e.printStackTrace();
             if(e.toString().contains("already exists"))
             {
-                result="该数据表已经存在";
+                result="Table already exists";
+                return result;
             }
             result="create语句执行失败";
             ps.close();
@@ -261,7 +275,7 @@ public class ExcelDaoImpl implements IExcelDao{
         ArrayList<String> headers=new ArrayList<String>();
         String sql=null;
         try {
-            sql=Sql.makeFindHeaderSql(dbname,"dbbd");
+            sql=Sql.makeFindHeaderSql(dbname,"bddb");
             this.ps = this.conn.prepareStatement(sql);
             ResultSet rs = this.ps.executeQuery();
             while (rs.next()) {
@@ -352,13 +366,12 @@ public class ExcelDaoImpl implements IExcelDao{
         }
 
         //创建数据表
-        try{
-            result=createDataTable(excel);//创建数据表
-        }catch(Exception e)
-        {
-            e.printStackTrace();
+
+        result=createDataTable(excel);//创建数据表
+        if(result.equals("Table already exists")){
             return result;
         }
+
 
         //保存数据
         try{
@@ -376,12 +389,13 @@ public class ExcelDaoImpl implements IExcelDao{
         result="创建成功！";
 
         //创建属性表
-        try{
+        try {
             result=createPropertyTable(dbname,property);//创建属性表
-        }catch (Exception e)
-        {
+            if(result!=null && result.equals("Table already exists")){
+                return result;
+            }
+        } catch (Exception e) {
             e.printStackTrace();
-            return result;
         }
 
         //保存属性
@@ -428,4 +442,36 @@ public class ExcelDaoImpl implements IExcelDao{
         return excel;
     }
 
+    @Override
+    public String savePreData(String dbname, ArrayList<String> predatas, String header) throws Exception {
+       String result=null;
+        result=InsertOneRowsData(dbname,predatas,header);
+        return result;
+    }
+    private String InsertOneRowsData(String dbname, ArrayList<String> predatas, String header){
+        String result=null;
+        String sql=null;
+
+        //创建sql语句
+        try {
+            ArrayList<String> tempheader=new ArrayList<String>();
+            tempheader.add(header);
+            sql=Sql.makeInsertSql(dbname,tempheader,predatas);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //使用sql语句
+        try {
+            this.ps = this.conn.prepareStatement(sql);
+            if (this.ps.executeUpdate() <=0) {
+                result= "插入预测数据失败";
+            }
+            this.ps.close();//这里如果不关闭可能会出问题
+        } catch (SQLException e) {
+            e.printStackTrace();
+            result= "插入预测数据失败";
+        }
+        return result;
+    }
 }
