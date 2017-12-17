@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		response.setCharacterEncoding("utf-8");
 		request.setCharacterEncoding("utf-8");
 		Boolean LoginRS = false ;
 		
@@ -49,11 +50,12 @@ public class LoginServlet extends HttpServlet {
 		try {
 			if(DaoFactory.getUserDaoInstance().login(account, password)==true){
 				LoginRS = true;  //登录成功
-				session.setAttribute("sessionId",account);
-
+				session.setAttribute("uid",account);
+				request.getRequestDispatcher("user.jsp").forward(request,response);
 			}
 			else {
 			LoginRS = false; //登录失败
+				request.getRequestDispatcher("index.jsp").forward(request,response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

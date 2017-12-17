@@ -17,7 +17,11 @@ public class Excel
     private ArrayList<String> headers;//excel表的表头
     private ArrayList<String> properties;//每个表头的属性
     private ArrayList<ArrayList<String>> datas;//数据
-
+    public Excel(){
+        headers=new ArrayList<String>();
+        properties=new ArrayList<String>();
+        datas=new ArrayList<ArrayList<String>>();
+    }
     public ArrayList<String> getProperties() {
         return properties;
     }

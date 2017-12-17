@@ -60,7 +60,7 @@
         </ul>
     </div>
 </nav>
-<form action="filedotest.jsp" method="post" enctype="multipart/form-data">
+<form action="UploadFileServlet" method="post" enctype="multipart/form-data">
 <div style="padding-top: 0px;padding-left: 80px">
     <div id="section1" class="container-fluid" style="padding-top: 80px" style="margin-top: 80px">
         <h3>请选择文件类型</h3>
@@ -71,7 +71,7 @@
                     <a href="#" class="thumbnail" onclick="document.getElementById('able').className ='btn btn-primary btn-lg';document.getElementById('optionsRadios3').checked=true">
                         <img src="/wp-content/uploads/2014/06/kittens.jpg"
                              alt="通用的占位符缩略图">
-                        <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" >
+                        <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="excel" >
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-3">
@@ -127,7 +127,8 @@
         <div class="navbar-form navbar-left " role="search">
             <!--<button type="submit" class="btn btn-primary btn-lg">上一步</button>-->
             <div class="form-group" style="margin-left: 50px;margin-right: 20px">
-                <input type="text" class="form-control" placeholder="数据名称" style="height: 40px">
+                <input type="text" name="appname" class="form-control" placeholder="数据名称" style="height: 40px">
+                <input name="srcpath" style="display: none" value="fileup">
             </div>
             <button type="submit" class="btn btn-primary btn-lg" >保存</button>
             <button type="submit" class="btn btn-primary btn-lg disabled">预览</button>

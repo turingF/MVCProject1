@@ -59,6 +59,9 @@ function loginAjax(){
         shakeModal();
         return false;
     }
+    else{
+        document.getElementById("loginForm").submit();
+    }
 
 /*   Simulate error message from the server   */
      //shakeModal();
@@ -84,7 +87,11 @@ function registerAjax(){
         {
             shakeModal();
             return false;
-        }0
+        }
+
+        else{
+            document.getElementById("registerForm").submit();
+        }
        // document.getElementById("register").submit();
 
 /*   Simulate error message from the server   */

@@ -123,10 +123,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                                 <div class="error"></div>
                                 <div class="form loginBox">
-                                    <form id="loginForm" method="post" action="LoginServlet" accept-charset="UTF-8">
-                                        <input id="email1" class="form-control" type="text" placeholder="用户名" name="account">
+                                    <form method="post" action="/login" accept-charset="UTF-8">
+                                        <input id="email1" class="form-control" type="text" placeholder="用户名" name="email">
                                         <input id="password1" class="form-control" type="password" placeholder="密码" name="password">
-                                        <input id="login" class="btn btn-default btn-login"   value="登录" onclick="loginAjax()">
+                                        <input class="btn btn-default btn-login" type="button"  value="登录" onclick="loginAjax()">
                                     </form>
                                 </div>
                             </div>
@@ -134,8 +134,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="box">
                             <div class="content registerBox" style="display:none;">
                                 <div class="form">
-                                    <form id="registerForm" method="post" html="{:multipart=>true}" data-remote="true" action="RegisterServlet" accept-charset="UTF-8">
-                                        <input id="email" class="form-control" type="text" placeholder="用户名" name="account">
+                                    <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
+                                        <input id="email" class="form-control" type="text" placeholder="用户名" name="email">
                                         <input id="password" class="form-control" type="password" placeholder="密码" name="password">
                                         <input id="password_confirmation" class="form-control" type="password" placeholder="确认密码" name="password_confirmation">
                                         <input id="register" class="btn btn-default btn-register" type="button" value="注册" onclick="registerAjax()">

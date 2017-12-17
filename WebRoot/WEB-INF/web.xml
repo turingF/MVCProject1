@@ -49,8 +49,33 @@
     <servlet-name>TestServlet</servlet-name>
     <servlet-class>edu.nuaa.servlet.LiYaoXinServlet.TestServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UploadFileServlet</servlet-name>
+    <servlet-class>edu.nuaa.servlet.ZongZheServlet.UploadFileServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AnalyAndPreServlet</servlet-name>
+    <servlet-class>edu.nuaa.servlet.ZongZheServlet.AnalyAndPreServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetDataServlet</servlet-name>
+    <servlet-class>edu.nuaa.servlet.ZongZheServlet.GetDataServlet</servlet-class>
+  </servlet>
 
 
+  <servlet-mapping>
+    <servlet-name> GetDataServlet</servlet-name>
+    <url-pattern>/GetDataServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AnalyAndPreServlet</servlet-name>
+    <url-pattern>/AnalyAndPreServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UploadFileServlet</servlet-name>
+    <url-pattern>/UploadFileServlet</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>TestServlet</servlet-name>
     <url-pattern>/TestServlet</url-pattern>

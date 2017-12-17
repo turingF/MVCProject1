@@ -3,6 +3,7 @@ package edu.nuaa.servlet.xuyang;
 
 import edu.nuaa.factory.DaoFactory;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +34,7 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		response.setCharacterEncoding("utf-8");
 		request.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
@@ -57,7 +58,8 @@ public class RegisterServlet extends HttpServlet {
 		}finally{
 			out.print(RegisRS);
 		}
-		
+		RequestDispatcher ds;
+		request.getRequestDispatcher("index.jsp").forward(request,response);
 	}
 
 	/**
